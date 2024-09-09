@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Remodel</title>
+</head>
+<body>
+    <h1> Home Remodel Competition</h1>
+
+    <h2>Costs</h2>
+    <p class="paint">Paint: $0.00</p>
+    <p class="floor">Floor Coverings: $0.00</p>
+    <p class="furniture">Furniture: $0.00</p>
+    <p class="totalCost">Total: $0.00</p>
+
+    <script>
+        let totalCost = 0;
+
+        function updateTotals(cost) {
+            document.querySelector(".totalCost").innerHTML = `Total: $ ${cost.toFixed(2)}`;
+        }
+
+        function addPaintAndSupplies() {
+            let cost = parseFloat(prompt("Enter the cost for the paint and supplies:"));
+            if (isNaN(cost)) cost = 0;
+            if (cost > 100) cost *= 1.1;
+
+            document.querySelector(".paint").innerHTML = `Paint: $ ${cost.toFixed(2)}`;
+
+            totalCost += cost;
+            updateTotals(totalCost);
+        }
+
+        function addFloorCoverings() {
+            let cost = parseFloat(prompt("Enter the cost for the floor coverings:"));
+            if (isNaN(cost)) cost = 0;
+            if (cost < 500) cost *= 0.85;
+
+            document.querySelector(".floor").innerHTML = `Floor Coverings: $ ${cost.toFixed(2)}`;
+
+            totalCost += cost;
+            updateTotals(totalCost);
+        }
+
+        function addFurniture() {
+            let cost = parseFloat(prompt("Enter the cost for the furniture:"));
+            if (isNaN(cost)) cost = 0;
+            if (cost < 500) cost *= 0.9;
+
+            document.querySelector(".furniture").innerHTML = `Furniture: $ ${cost.toFixed(2)}`;
+
+            totalCost += cost;
+            updateTotals(totalCost);
+        }
+
+        addPaintAndSupplies();
+        addFloorCoverings();
+        addFurniture();
+    </script>
+</body>
+</html>
